@@ -3,8 +3,54 @@
 ## competitive_coding :heart: (cheat sheet :tea:) 
 Necesito tener una biblioteca de todas las estructuras de datos y algoritmos utiles para avanzar en _HackerRank_ y en _UVA_. Las referencias y estructura estan basadas del libro __Competitive Programming 3__.
 
-<!-- START doctoc -->
-<!-- END doctoc -->
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+
+- [General](#general)
+  - [Includes](#includes)
+  - [Shortcuts](#shortcuts)
+    - [typedef:](#typedef)
+    - [Compresiones](#compresiones)
+    - [Convenciones](#convenciones)
+  - [IO](#io)
+    - [Input](#input)
+      - [Multiples casos](#multiples-casos)
+      - [Numeración de casos y lineas blancas](#numeraci%C3%B3n-de-casos-y-lineas-blancas)
+      - [C++String](#cstring)
+      - [C String](#c-string)
+    - [Output](#output)
+  - [STL](#stl)
+    - [Sort](#sort)
+    - [Binary Search](#binary-search)
+    - [Permutaciones](#permutaciones)
+    - [Bitsets](#bitsets)
+    - [Bitmask](#bitmask)
+  - [Contenedores STL (linear)](#contenedores-stl-linear)
+    - [Stack (LIFO)](#stack-lifo)
+    - [Queue (FIFO)(usado en BFS)](#queue-fifousado-en-bfs)
+    - [Deque](#deque)
+    - [Vector](#vector)
+    - [List](#list)
+  - [Contenedores STL (non-linear)](#contenedores-stl-non-linear)
+    - [BST (map/set) (RB tree)](#bst-mapset-rb-tree)
+      - [Map](#map)
+      - [Set](#set)
+    - [Heap (Max)](#heap-max)
+  - [Estructuras de datos](#estructuras-de-datos)
+  - [Matematicas](#matematicas)
+    - [Principios](#principios)
+      - [Criba de Eratóstenes (bitmaps)](#criba-de-erat%C3%B3stenes-bitmaps)
+      - [Criba de Eratóstenes (list)](#criba-de-erat%C3%B3stenes-list)
+      - [Es primo?](#es-primo)
+      - [Maximo Comun Divisor (GCD)](#maximo-comun-divisor-gcd)
+      - [Minimo Comun Multiplo (LCM)](#minimo-comun-multiplo-lcm)
+      - [Algoritmo de Euclides (GCD)](#algoritmo-de-euclides-gcd)
+      - [Cambio de base](#cambio-de-base)
+        - [de decimal a base b > 10](#de-decimal-a-base-b--10)
+      - [Exponenciacion por cuadrados](#exponenciacion-por-cuadrados)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 # General
 
