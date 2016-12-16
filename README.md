@@ -69,6 +69,7 @@ while(N--){
   // cin >> a >> b
 }
 ```
+
 Finalizacion con valores especiales
 ```c++
 int a, b;
@@ -76,6 +77,7 @@ while(scanf("%d %d", &a, &b), (a||b)){ // stop when a,b == 0
   // cout << a << b;
 }
 ```
+
 EOF
 ```c++
 int a,b;
@@ -92,6 +94,7 @@ while(//){
   printf("Caso %d: %d\n", c++, a);
 }
 ```
+
 #### C++String
 
 leer lineas
@@ -134,6 +137,7 @@ La libreria estandar
 void sort (RandomAccessIterator first, RandomAccessIterator last, Compare comp);
 void stable_sort ( RandomAccessIterator first, RandomAccessIterator last, Compare comp );
 ```
+
 ### Binary Search
 * O(n)
 ```c++
@@ -144,11 +148,13 @@ ForwardIterator upper_bound (ForwardIterator first, ForwardIterator last, const 
 ForwardIterator lower_bound (ForwardIterator first, ForwardIterator last, const T& val);
 //Iterador al elemento menor a val
 ```
+
 ### Permutaciones
 > En un `while()`, permite chequear combinaciones.
 ```c++
 bool next_permutation (BidirectionalIterator first, BidirectionalIterator last, Compare comp);
 ```
+
 ### Bitsets
 >`#include <bitset>`
 
@@ -159,13 +165,13 @@ bool next_permutation (BidirectionalIterator first, BidirectionalIterator last, 
 #define isOn(i, bitmask)  (bitmask & (1 << i))
 #define setOn(i, bitmask) (bitmask | (1 << i))
 ```
-## STL Containers
+
+## Contenedores STL (linear)
 
 ### Stack (LIFO)
 > `#include <stack>`
 
 Caracteristico O(1) en `push()` y `pop()`.
-
 ```c++
 // vector como container; Copia el contenido de datos a stack
 stack<int, vector<int> > stack (datos);
@@ -176,6 +182,7 @@ bool empty() const;
 size_type size() const;
 const_reference& top() const;
 ```
+
 ### Queue (FIFO)(usado en BFS)
 > `#include <queue>`
 
@@ -191,6 +198,7 @@ bool empty() const; // true si empty
 size_type size() const;
 const_reference top() const; // obtiene la referencia a top()
 ```
+
 ### Deque
 > `#include <deque>`
 
@@ -224,5 +232,189 @@ list.pop_front(): remove the first element.
 list.pop_back(): remove the last element.
 ```
 
+## Contenedores STL (non-linear)
+
+### BST (map/set) (RB tree)
+#### Map
+> `#include <map>`
+
+Map está organizado `key -> value`. 
+```c++
+map<char,int> fist; 							  //Constructor
+map<char,int> second (first.begin(),first.end()); //Constructor por rango
+map<char,int> third (second);					  // Copia
+
+insert(pair<first type, second type>) ;
+erase(const_iterator first, const_iterator last);
+clear();
+
+find(const key_type& k); 						 // Return end() if not found
+count(const key_type& k); 				     	 // return 1 or 0
+operator[]; || .at()
+
+iterator lower_bound (const key_type& k);
+iterator upper_bound (const key_type& k);
+pair<iterator,iterator> equal_range (const value_type& val);
+```
+
+#### Set
+> `#include <set>`
+
+Set solo guarda un `value`.
+
+### Heap (Max)
+> `#include <priority_queue>`
+
+El primer elemento siempre es el mayor. El truco para crear un __Min Heap__ es insertar valores negados.
+
+```c++
+priority_queue<int> first;						//Constructor
+priority_queue<int> second (myints,myints+4);	//
+
+void pop();
+void push (value_type&& val);
+const_reference top() const;
+```
+
+
 ## Estructuras de datos
 > TODO
+
+## Matematicas
+
+### Principios
+
+#### Criba de Eratóstenes (bitmaps)
+```c++
+ll _sieve_size;
+bitset<10000010> bs; // 10^7
+vi primes;
+
+void sieve(ll upperbound) {
+  _sieve_size = upperbound + 1;
+  bs.reset();
+  bs.flip();
+  bs.set(0, false);
+  bs.set(1, false);
+  for (ll i = 2; i <= _sieve_size; i++) if (bs.test((size_t)i)) {
+    // cross out multiples of i starting from i * i!
+    for (ll j = i * i; j <= _sieve_size; j += i) bs.set((size_t)j, false);
+    primes.push_back((int)i); // simultaneously update this
+  }
+} 
+```
+
+#### Criba de Eratóstenes (list)
+```c++
+boolean[] sieve(int n){
+   boolean[] prime=new boolean[n+1];
+   Arrays.fill(prime,true);
+   prime[0]=false;
+   prime[1]=false;
+   int m=Math.sqrt(n);
+
+   for (int i=2; i<=m; i++)
+      if (prime[i])
+         for (int k=i*i; k<=n; k+=i)
+            prime[k]=false;
+
+   return prime;
+} 
+```
+
+#### Es primo?
+```c++
+bool is_prime(int n) {
+    if (n == 1 || n % 2 == 0)
+        return false;  
+    int t = sqrt(n);
+    for (int i = 3; i <= t; i += 2)
+        if (n % i == 0)
+            return false;
+    return true;
+}
+```
+
+#### Maximo Comun Divisor (GCD)
+```c++
+int mcd(int a, int b) {
+    return b == 0 ? a : mcd(b, a % b);
+}
+```
+
+#### Minimo Comun Multiplo (LCM)
+```c++
+int mcm(int a, int b) {
+    return a / mcd(a, b) * b;
+}
+```
+
+#### Algoritmo de Euclides (GCD)
+```c++
+//a>0 && b>0
+int euclides(int a, int b){
+   if (b==0) return a;
+   return GCD(b,a%b);
+}
+```
+
+#### Cambio de base
+```c++
+// Numero n a base b a decimal
+public int toDecimal(int n, int b){
+   int result=0;
+   int multiplier=1;
+      
+   while(n>0){
+      result+=n%10*multiplier;
+      multiplier*=b;
+      n/=10;
+   }    
+   return result;
+}
+
+// Numero decimal n a un numero en base b
+public int fromDecimal(int n, int b){
+   int result=0;
+   int multiplier=1;
+      
+   while(n>0){
+      result+=n%b*multiplier;
+      multiplier*=10;
+      n/=b;
+   }
+      
+   return result;
+}
+```
+
+##### de decimal a base b > 10
+```c++
+public String fromDecimal2(int n, int b){
+   String chars="0123456789ABCDEFGHIJ";
+   String result="";
+      
+   while(n>0){
+      result=chars.charAt(n%b) + result;
+      n/=b;
+   }
+      
+   return result;
+}
+```
+
+#### Exponenciacion por cuadrados
+```c++
+// n**p%M
+// O(log(q)) 
+int power(int n, int p, int M) {
+    int result = 1;
+    while (p > 0) {
+        if (p % 2 == 1)
+            result = (result*n) % M;
+        p /= 2;
+        n = (n*n) % M;
+    }
+    return result;
+}
+```
